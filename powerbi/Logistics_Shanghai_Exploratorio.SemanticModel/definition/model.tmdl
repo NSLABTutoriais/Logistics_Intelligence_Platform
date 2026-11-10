@@ -1,0 +1,22 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["pickup_sh-00000-of-00001-79fabe8088e723a2","Inspecao_Tipos_Colunas","Resumo_Validacao_DS","Validacao_DS"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table pickup_sh-00000-of-00001-79fabe8088e723a2
+ref table Inspecao_Tipos_Colunas
+ref table Resumo_Validacao_DS
+ref table Validacao_DS
+
+ref cultureInfo pt-BR
+

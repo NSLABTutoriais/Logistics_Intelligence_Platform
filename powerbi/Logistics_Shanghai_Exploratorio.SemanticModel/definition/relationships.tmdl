@@ -1,0 +1,10 @@
+relationship AutoDetected_1e0f1dcb-fff4-4bc8-b14c-53cd8acb1d05
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Validacao_DS.order_id
+	toColumn: pickup_sh-00000-of-00001-79fabe8088e723a2.order_id
+
+relationship AutoDetected_d49716e2-7d3d-4ed7-8d02-a0123486643b
+	fromColumn: Validacao_DS.validacao_ds
+	toColumn: Resumo_Validacao_DS.validacao_ds
+

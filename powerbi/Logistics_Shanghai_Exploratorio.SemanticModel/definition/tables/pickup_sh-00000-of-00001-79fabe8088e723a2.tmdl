@@ -1,0 +1,185 @@
+table pickup_sh-00000-of-00001-79fabe8088e723a2
+	lineageTag: 416435ea-82aa-4002-abb3-4840c4ace9b4
+
+	column order_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 256cb2de-817a-4f54-90d4-f3426c333142
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 6d4f3596-5b87-4db3-b7a8-0a5c2af1b628
+		summarizeBy: sum
+		sourceColumn: region_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 5c735ee1-b008-48b4-88ca-9698049701a0
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column courier_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 544612b4-e816-42c4-bca6-cc6ff7eea019
+		summarizeBy: sum
+		sourceColumn: courier_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column accept_time
+		dataType: string
+		lineageTag: cda5708d-3c78-4320-93df-643cc16bae09
+		summarizeBy: none
+		sourceColumn: accept_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column time_window_start
+		dataType: string
+		lineageTag: b9eb9b77-5281-4a81-9c68-aa2fcbd1748e
+		summarizeBy: none
+		sourceColumn: time_window_start
+
+		annotation SummarizationSetBy = Automatic
+
+	column time_window_end
+		dataType: string
+		lineageTag: d683fe58-b751-43a5-a043-2a6aacd70c59
+		summarizeBy: none
+		sourceColumn: time_window_end
+
+		annotation SummarizationSetBy = Automatic
+
+	column lng
+		dataType: double
+		lineageTag: 31caa773-448e-41f1-91a3-d1ab3e3b0ce0
+		summarizeBy: sum
+		sourceColumn: lng
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lat
+		dataType: double
+		lineageTag: 44379e71-270c-4ce2-ae57-d3f5f5debefe
+		summarizeBy: sum
+		sourceColumn: lat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column aoi_id
+		dataType: int64
+		formatString: 0
+		lineageTag: e5827221-ddf6-4ea1-a7a6-403b712dbff7
+		summarizeBy: sum
+		sourceColumn: aoi_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column aoi_type
+		dataType: int64
+		formatString: 0
+		lineageTag: 3841c5dc-09d3-49fa-b982-1d8758aed211
+		summarizeBy: sum
+		sourceColumn: aoi_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column pickup_time
+		dataType: string
+		lineageTag: 042ccb65-df27-44c7-a70b-c76320c24a67
+		summarizeBy: none
+		sourceColumn: pickup_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column pickup_gps_time
+		dataType: string
+		lineageTag: 57b255da-0c0a-4c63-bed8-cba6cca6b348
+		summarizeBy: none
+		sourceColumn: pickup_gps_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column pickup_gps_lng
+		dataType: double
+		lineageTag: 96a129db-5413-44fc-bcb2-15d3f5b60531
+		summarizeBy: sum
+		sourceColumn: pickup_gps_lng
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column pickup_gps_lat
+		dataType: double
+		lineageTag: c0fbaa74-a0d4-41ef-a83d-60b6c930f82b
+		summarizeBy: sum
+		sourceColumn: pickup_gps_lat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column accept_gps_time
+		dataType: string
+		lineageTag: 5371493a-1f61-452c-a724-08703bc9169e
+		summarizeBy: none
+		sourceColumn: accept_gps_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column accept_gps_lng
+		dataType: double
+		lineageTag: 49e86b14-2ad7-4e70-827d-bc22feca09ee
+		summarizeBy: sum
+		sourceColumn: accept_gps_lng
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column accept_gps_lat
+		dataType: double
+		lineageTag: eeef1973-fa87-4e19-882c-d00f69303555
+		summarizeBy: sum
+		sourceColumn: accept_gps_lat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ds
+		dataType: int64
+		formatString: 0
+		lineageTag: f5d095cb-9f2c-49ac-8fbd-ee127e53ee68
+		summarizeBy: sum
+		sourceColumn: ds
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pickup_sh-00000-of-00001-79fabe8088e723a2 = m
+		mode: import
+		source =
+				let
+				    Fonte = Parquet.Document(File.Contents("C:\Users\nslab\Documents\labs\Logistics_Intelligence_Platform\data\raw\pickup\pickup_sh-00000-of-00001-79fabe8088e723a2.parquet"), [Compression=null, LegacyColumnNameEncoding=false, MaxDepth=null])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

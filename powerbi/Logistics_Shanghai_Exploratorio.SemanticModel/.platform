@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Logistics_Shanghai_Exploratorio"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "97c84708-0eb7-4c32-b31b-aba2eca509f7"
+  }
+}

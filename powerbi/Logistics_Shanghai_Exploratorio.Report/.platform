@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Logistics_Shanghai_Exploratorio"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "dfad44d0-4f91-492b-9010-28ba5f33296a"
+  }
+}

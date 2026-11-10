@@ -1,0 +1,53 @@
+table Inspecao_Tipos_Colunas
+	lineageTag: c7d3b22d-58fe-413d-bc91-2cc27d98b4c4
+
+	column Name
+		dataType: string
+		lineageTag: 13b99f3e-7d34-46b2-b86b-e8ee637d99c5
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column TypeName
+		dataType: string
+		lineageTag: 9e6b2b5b-f3a6-4122-b740-88f46f6abce7
+		summarizeBy: none
+		sourceColumn: TypeName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Kind
+		dataType: string
+		lineageTag: 47accbbd-6ee5-4623-be96-356237ac3e17
+		summarizeBy: none
+		sourceColumn: Kind
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsNullable
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3165e1f8-cc14-49fe-a127-af23a8662e4f
+		summarizeBy: none
+		sourceColumn: IsNullable
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Inspecao_Tipos_Colunas = m
+		mode: import
+		source =
+				let
+				    Fonte = #"pickup_sh-00000-of-00001-79fabe8088e723a2",
+				    Esquema = Table.Schema(Fonte),
+				    Resultado = Table.SelectColumns(
+				        Esquema,
+				        {"Name", "TypeName", "Kind", "IsNullable"}
+				    )
+				in
+				    Resultado
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

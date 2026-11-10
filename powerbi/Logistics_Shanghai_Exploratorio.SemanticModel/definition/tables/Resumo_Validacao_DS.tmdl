@@ -1,0 +1,39 @@
+table Resumo_Validacao_DS
+	lineageTag: 74d0a49f-984c-4a43-b496-311ddd40379f
+
+	column validacao_ds
+		dataType: string
+		lineageTag: 7886b1ef-2781-4a58-9e59-82af2618e2a7
+		summarizeBy: none
+		sourceColumn: validacao_ds
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantidade
+		dataType: int64
+		formatString: 0
+		lineageTag: ea3a6a0b-531b-4a5d-839d-142f183830d1
+		summarizeBy: none
+		sourceColumn: Quantidade
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Resumo_Validacao_DS = m
+		mode: import
+		source =
+				let
+				    Fonte = Validacao_DS,
+				    Resumo = Table.Group(
+				        Fonte,
+				        {"validacao_ds"},
+				        {
+				            {"Quantidade", each Table.RowCount(_), Int64.Type}
+				        }
+				    )
+				in
+				    Resumo
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

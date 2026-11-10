@@ -1,0 +1,205 @@
+table Validacao_DS
+	lineageTag: bc87a7b0-7fed-4e3a-9da7-0b45c819c7e7
+
+	column order_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 01d74862-10fa-4b8f-b63f-8983d6f284c0
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 90876ddb-8c76-485a-9602-f2caffc51d4e
+		summarizeBy: sum
+		sourceColumn: region_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 7af67dca-eb37-4666-b12c-1ee3fac256f5
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column courier_id
+		dataType: int64
+		formatString: 0
+		lineageTag: c55bb829-72d5-4221-96f5-39fadb1eef5d
+		summarizeBy: sum
+		sourceColumn: courier_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column accept_time
+		dataType: string
+		lineageTag: cb7595fd-5347-4583-90dc-2041eac85d38
+		summarizeBy: none
+		sourceColumn: accept_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column time_window_start
+		dataType: string
+		lineageTag: fb389b4f-63fb-42de-a401-421f9e26520b
+		summarizeBy: none
+		sourceColumn: time_window_start
+
+		annotation SummarizationSetBy = Automatic
+
+	column time_window_end
+		dataType: string
+		lineageTag: 515c8829-5321-42d0-a8e1-ab6999f760b3
+		summarizeBy: none
+		sourceColumn: time_window_end
+
+		annotation SummarizationSetBy = Automatic
+
+	column lng
+		dataType: double
+		lineageTag: 57dadabe-b197-44a0-9b1b-45f03b619ffa
+		summarizeBy: sum
+		sourceColumn: lng
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lat
+		dataType: double
+		lineageTag: 3911a5d4-c30a-4c49-b789-c59fa5b660ff
+		summarizeBy: sum
+		sourceColumn: lat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column aoi_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 201c3280-3b47-4cf9-8807-4ba624976179
+		summarizeBy: sum
+		sourceColumn: aoi_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column aoi_type
+		dataType: int64
+		formatString: 0
+		lineageTag: a81a5cda-9373-452c-a0eb-cf8a56ffc17e
+		summarizeBy: sum
+		sourceColumn: aoi_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column pickup_time
+		dataType: string
+		lineageTag: fd4c52fe-9642-48aa-9372-eb33606b29f7
+		summarizeBy: none
+		sourceColumn: pickup_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column pickup_gps_time
+		dataType: string
+		lineageTag: 84be6c6c-a778-47bf-b03c-1c0225571adf
+		summarizeBy: none
+		sourceColumn: pickup_gps_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column pickup_gps_lng
+		dataType: double
+		lineageTag: 42358560-3c9e-4ce2-92f0-7d29ae9f7744
+		summarizeBy: sum
+		sourceColumn: pickup_gps_lng
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column pickup_gps_lat
+		dataType: double
+		lineageTag: f3440063-5aae-40d3-9c78-d52068d3a3d8
+		summarizeBy: sum
+		sourceColumn: pickup_gps_lat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column accept_gps_time
+		dataType: string
+		lineageTag: a7fc61fb-6949-4024-8c04-a398a8ddf988
+		summarizeBy: none
+		sourceColumn: accept_gps_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column accept_gps_lng
+		dataType: double
+		lineageTag: 3632df72-f995-4f0e-b656-53a78a109b0f
+		summarizeBy: sum
+		sourceColumn: accept_gps_lng
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column accept_gps_lat
+		dataType: double
+		lineageTag: ffa4298f-7c89-4fef-93e0-0a96873c151b
+		summarizeBy: sum
+		sourceColumn: accept_gps_lat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ds
+		dataType: int64
+		formatString: 0
+		lineageTag: 95041f62-6b27-4060-84a2-a80907d84ba2
+		summarizeBy: sum
+		sourceColumn: ds
+
+		annotation SummarizationSetBy = Automatic
+
+	column validacao_ds
+		dataType: string
+		lineageTag: 1b32c20d-5e62-4153-b226-e7908d0dc9eb
+		summarizeBy: none
+		sourceColumn: validacao_ds
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Validacao_DS = m
+		mode: import
+		source =
+				let
+				    Fonte = #"pickup_sh-00000-of-00001-79fabe8088e723a2",
+				    #"Personalização Adicionada" = Table.AddColumn(Fonte, "validacao_ds", each if [ds] = null or [accept_time] = null then
+				    "SEM_DADOS"
+				else
+				    let
+				        mes = Number.FromText(Text.Start([accept_time], 2)),
+				        dia = Number.FromText(Text.Range([accept_time], 3, 2)),
+				        dsCalculado = mes * 100 + dia
+				    in
+				        if [ds] = dsCalculado then
+				            "OK"
+				        else
+				            "DIVERGENTE")
+				in
+				    #"Personalização Adicionada"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

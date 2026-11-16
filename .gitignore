@@ -15,6 +15,7 @@ __pycache__/
 
 # Datasets originais - nao versionar no Git
 /data/raw/
+/data/silver/
 
 # Power BI - arquivos locais e cache
 **/.pbi/

@@ -19,3 +19,12 @@ __pycache__/
 
 # Power BI - arquivos locais e cache
 **/.pbi/
+
+# MLflow - banco de dados e artefatos locais
+/mlruns/
+
+# Resultados analiticos de Machine Learning
+/data/ml_results/
+
+# Documentacao - PDFs locais nao versionados
+/docs/*.pdf
